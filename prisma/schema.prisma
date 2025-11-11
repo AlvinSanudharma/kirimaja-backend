@@ -91,8 +91,8 @@ model Branch {
 
 model EmployeeBranch {
   id        Int      @id @default(autoincrement())
-  branchId  Int      @map("branch_id")
   userId    Int      @map("user_id")
+  branchId  Int      @map("branch_id")
   type      String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")
@@ -140,26 +140,25 @@ model Shipment {
 }
 
 model ShipmentDetail {
-  id                   Int     @id @default(autoincrement())
-  shipmentId           Int     @unique @map("shipment_id")
-  userId               Int     @map("user_id")
-  pickupAddressId      Int     @map("pickup_address_id")
+  id                   Int      @id @default(autoincrement())
+  shipmentId           Int      @unique @map("shipment_id")
+  userId               Int      @map("user_id")
+  pickupAddressId      Int      @map("pickup_address_id")
   weight               Float?
-  deliveryType         String  @map("delivery_type")
-  destinationAddress   String  @map("destination_address")
-  destinationLatitude  Float?  @map("destination_latitude")
-  destinationLongitude Float?  @map("destination_longitude")
-  packageType          String  @map("package_type")
-  pickupProof          String? @map("pickup_proof")
-  receiptProof         String? @map("receipt_proof")
-  receiptName          String  @map("receipt_name")
-  receiptPhone         String  @map("receipt_phone")
-
-  basePrice     Float?   @map("base_price")
-  weightPrice   Float?   @map("weight_price")
-  distancePrice Float?   @map("distance_price")
-  createdAt     DateTime @default(now()) @map("created_at")
-  updatedAt     DateTime @default(now()) @map("updated_at")
+  deliveryType         String   @map("delivery_type")
+  destinationAddress   String   @map("destination_address")
+  destinationLatitude  Float?   @map("destination_latitude")
+  destinationLongitude Float?   @map("destination_longitude")
+  packageType          String   @map("package_type")
+  pickupProof          String?  @map("pickup_proof")
+  receiptProof         String?  @map("receipt_proof")
+  recipientName        String   @map("recipient_name")
+  recipientPhone       String   @map("recipient_phone")
+  basePrice            Float?   @map("base_price")
+  weightPrice          Float?   @map("weight_price")
+  distancePrice        Float?   @map("distance_price")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @default(now()) @map("updated_at")
 
   shipment Shipment    @relation(fields: [shipmentId], references: [id])
   user     User        @relation(fields: [userId], references: [id])
