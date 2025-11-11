@@ -1,0 +1,61 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { Expose, Type } from 'class-transformer';
+
+class RoleResponse {
+    @Expose()
+    id: number;
+
+    @Expose()
+    name: string;
+
+    @Expose()
+    key: string;
+
+    @Expose()
+    @Type(() => PermissionResponse)
+    permissions: PermissionResponse[];
+}
+
+class PermissionResponse {
+    @Expose()
+    id: number;
+
+    @Expose()
+    name: string;
+
+    @Expose()
+    key: string;
+
+    @Expose()
+    description: string;
+}
+
+class UserResponse {
+    @Expose()
+    id: number;
+
+    @Expose()
+    email: number;
+
+    @Expose()
+    name: string;
+
+    @Expose()
+    avatar: string;
+
+    @Expose()
+    phoneNumber: string;
+
+    @Expose()
+    @Type(() => RoleResponse)
+    roles: RoleResponse[];
+}
+
+export class AuthLoginResponse {
+    @Expose()
+    accessToken: string;
+
+    @Expose()
+    @Type(() => UserResponse)
+    user: UserResponse[];
+}
