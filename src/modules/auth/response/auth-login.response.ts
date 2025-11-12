@@ -48,7 +48,7 @@ export class UserResponse {
 
     @Expose()
     @Type(() => RoleResponse)
-    roles: RoleResponse[];
+    role: RoleResponse;
 }
 
 export class AuthLoginResponse {

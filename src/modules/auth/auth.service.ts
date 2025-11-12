@@ -69,12 +69,14 @@ export class AuthService {
             ...userWithoutPassword,
             role: {
                 ...user.role,
-                permission: user.role.rolePermissions.map((rolePermission) => ({
-                    id: rolePermission.permission.id,
-                    name: rolePermission.permission.name,
-                    key: rolePermission.permission.key,
-                    resource: rolePermission.permission.resource,
-                })),
+                permissions: user.role.rolePermissions.map(
+                    (rolePermission) => ({
+                        id: rolePermission.permission.id,
+                        name: rolePermission.permission.name,
+                        key: rolePermission.permission.key,
+                        resource: rolePermission.permission.resource,
+                    }),
+                ),
             },
         };
 
