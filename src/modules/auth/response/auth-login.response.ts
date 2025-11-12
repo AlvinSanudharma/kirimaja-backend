@@ -30,7 +30,7 @@ class PermissionResponse {
     description: string;
 }
 
-class UserResponse {
+export class UserResponse {
     @Expose()
     id: number;
 
@@ -57,5 +57,5 @@ export class AuthLoginResponse {
 
     @Expose()
     @Type(() => UserResponse)
-    user: UserResponse[];
+    user: UserResponse;
 }
