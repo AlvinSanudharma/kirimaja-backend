@@ -7,14 +7,14 @@ const authLoginSchema = z.object({
             invalid_type_error: 'Email must be a string',
         })
         .email({
-            message: 'Invalid format',
+            message: 'Invalid email format',
         }),
     password: z
         .string({
             required_error: 'Password is required',
             invalid_type_error: 'Password must be a string',
         })
-        .min(8, 'password must be at least 8 characters long'),
+        .min(8, 'Password must be at least 8 characters long'),
 });
 
 export class AuthLoginDto {
