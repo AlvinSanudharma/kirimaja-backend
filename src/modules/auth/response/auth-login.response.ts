@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Expose, Type } from 'class-transformer';
 
-class RoleResponse {
+export class RoleResponse {
     @Expose()
     id: number;
 
@@ -27,7 +26,7 @@ class PermissionResponse {
     key: string;
 
     @Expose()
-    description: string;
+    resource: string;
 }
 
 export class UserResponse {
