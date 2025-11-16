@@ -13,7 +13,7 @@ export class RolesController {
     @Get()
     async findAll(): Promise<BaseResponse<RoleResponse[]>> {
         return {
-            message: 'Roles retrived successfully',
+            message: 'Roles retrieved successfully',
             data: await this.rolesService.findAll(),
         };
     }
@@ -23,7 +23,7 @@ export class RolesController {
         @Param('id') id: string,
     ): Promise<BaseResponse<RoleResponse>> {
         return {
-            message: `Role with ID ${id} retrived successfully`,
+            message: `Role with ID ${id} retrieved successfully`,
             data: await this.rolesService.findOne(+id),
         };
     }
