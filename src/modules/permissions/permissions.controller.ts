@@ -18,7 +18,10 @@ export class PermissionsController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.permissionsService.findOne(+id);
+    async findOne(@Param('id') id: string): Promise<BaseResponse<Permission>> {
+        return {
+            message: 'Permission retrieved successfully',
+            data: await this.permissionsService.findOne(+id),
+        };
     }
 }

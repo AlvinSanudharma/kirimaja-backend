@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../../common/prisma/prisma.service';
 import { Permission } from '@prisma/client';
 
@@ -10,7 +10,24 @@ export class PermissionsService {
         return await this.prismaService.permission.findMany();
     }
 
-    findOne(id: number) {
-        return `This action returns a #${id} permission`;
+    async findOne(id: number): Promise<Permission> {
+        const permission = await this.prismaService.permission.findUnique({
+            where: {
+                id,
+            },
+        });
+
+        if (!permission) {
+            throw new NotFoundException(`Permission with ID ${id} not found`);
+        }
+
+        return {
+            id: permission.id,
+            name: permission.name,
+            key: permission.key,
+            resource: permission.resource,
+            createdAt: permission.createdAt,
+            updatedAt: permission.updatedAt,
+        };
     }
 }
