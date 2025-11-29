@@ -65,7 +65,7 @@ export class ProfileService {
         }
 
         if (updateProfileDto.password) {
-            updatedData.avatar = await bcrypt.hash(
+            updatedData.password = await bcrypt.hash(
                 updateProfileDto.password,
                 10,
             );
