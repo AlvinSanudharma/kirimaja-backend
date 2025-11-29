@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z, ZodObject } from 'zod';
 
 const updateProfileSchema = z.object({
     name: z
@@ -36,4 +36,14 @@ const updateProfileSchema = z.object({
         .nullable(),
 });
 
-export class UpdateProfileDto {}
+export class UpdateProfileDto {
+    static schema: ZodObject<any> = updateProfileSchema;
+
+    constructor(
+        public name?: string,
+        public email?: string,
+        public phone_number?: string,
+        public password?: string,
+        public avatar?: string,
+    ) {}
+}

@@ -32,7 +32,7 @@ export class ProfileController {
 
     @Patch(':id')
     update(
-        @Param('id') id: string,
+        @Req() req: Request & { user?: any },
         @Body() updateProfileDto: UpdateProfileDto,
     ) {
         return this.profileService.update(+id, updateProfileDto);
